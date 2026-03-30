@@ -100,7 +100,7 @@
                 <div class="bg-white p-6 rounded-lg shadow-lg text-center">
                     <i class="fas fa-envelope text-blue-600 text-4xl mb-4"></i>
                     <h3 class="text-xl font-bold mb-2" data-i18n="email">Email</h3>
-                    <a href="mailto:contato@jltlda.com" class="text-blue-600 hover:underline break-all" id="email-link">contato@jltlda.com</a>
+                    <a href="mailto:jeffersontulho1@gmail.com" class="text-blue-600 hover:underline break-all" id="email-link">jeffersontulho1@gmail.com</a>
                     <p class="text-gray-600 mt-2 text-sm" data-i18n="emailResponse">Respondo em até 24h úteis</p>
                 </div>
 
@@ -108,14 +108,14 @@
                 <div class="bg-white p-6 rounded-lg shadow-lg text-center">
                     <i class="fab fa-fiverr text-green-600 text-4xl mb-4"></i>
                     <h3 class="text-xl font-bold mb-2" data-i18n="fiverr">Fiverr</h3>
-                    <a href="https://fiverr.com/jltlda" target="_blank" class="text-green-600 hover:underline" id="fiverr-link">fiverr.com/jltlda</a>
+                    <a href="https://fiverr.com/jtltda" target="_blank" class="text-green-600 hover:underline" id="fiverr-link">fiverr.com/jtltda</a>
                     <p class="text-gray-600 mt-2 text-sm" data-i18n="fiverrText">Contrate diretamente pela plataforma</p>
                 </div>
             </div>
 
             <!-- Botão WhatsApp -->
             <div class="text-center mt-8">
-                <a href="https://wa.me/5511999999999" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-4 rounded-full shadow-lg transition text-lg">
+                <a href="https://wa.me/5511952356611" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-4 rounded-full shadow-lg transition text-lg">
                     <i class="fab fa-whatsapp mr-3 text-2xl"></i>
                     <span data-i18n="whatsappBtn">Chamar no WhatsApp</span>
                 </a>
@@ -130,9 +130,9 @@
             <p class="mb-8 text-gray-400" data-i18n="footerText">Pronto para iniciar seu projeto?</p>
             
             <div class="flex justify-center space-x-6 mb-8">
-                <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-github"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://linkedin.com/in/jeffersonlima-jtltda" target="_blank" class="text-gray-400 hover:text-white text-2xl" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/JTLTDA" target="_blank" class="text-gray-400 hover:text-white text-2xl" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://wa.me/5511952356611" target="_blank" class="text-gray-400 hover:text-white text-2xl" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
             
             <p class="text-sm text-gray-500">&copy; 2024 Jefferson Lima - (JTLTDA). <span data-i18n="allRights">Todos os direitos reservados.</span></p>
@@ -143,9 +143,11 @@
     <script>
         // CONFIGURAÇÕES
         const config = {
-            email: "jeffersontulho1@gmail.com", // MUDE AQUI
-            fiverr: "https://fiverr.com/jtltda", // MUDE AQUI
-            whatsapp: "55119952356611", // MUDE AQUI (somente números)
+            email: "jeffersontulho1@gmail.com",
+            fiverr: "https://fiverr.com/jtltda",
+            whatsapp: "5511952356611",  // ✅ Corrigido!
+            linkedin: "https://www.linkedin.com/in/jefferson-lima-28367b2ab/",
+            github: "https://github.com/JTLTDA",
             products: [
                 {
                     title: { pt: "Criação de Landing Page", en: "Landing Page Creation", jp: "ランディングページ作成" },
@@ -259,13 +261,11 @@
             currentLang = lang;
             document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang === 'en' ? 'en' : 'ja';
             
-            // Atualiza botões
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if(btn.dataset.lang === lang) btn.classList.add('active');
             });
 
-            // Atualiza textos
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.dataset.i18n;
                 if(translations[lang][key]) {
@@ -273,7 +273,6 @@
                 }
             });
 
-            // Re-renderiza produtos
             renderProducts();
         }
 
@@ -304,9 +303,18 @@
             document.getElementById('email-link').textContent = config.email;
             document.getElementById('fiverr-link').href = config.fiverr;
             
-            // Atualiza link WhatsApp
             const waLink = document.querySelector('a[href*="wa.me"]');
             if(waLink) waLink.href = `https://wa.me/${config.whatsapp}`;
+            
+            // Atualiza links sociais no footer
+            const socialLinks = document.querySelectorAll('footer a');
+            socialLinks.forEach(link => {
+                if(link.href.includes('linkedin.com')) link.href = config.linkedin;
+                if(link.href.includes('github.com')) link.href = config.github;
+                if(link.href.includes('wa.me') && !link.href.includes('5511952356611')) {
+                    // Mantém o botão principal do WhatsApp, atualiza só os do footer se necessário
+                }
+            });
             
             renderProducts();
         });
