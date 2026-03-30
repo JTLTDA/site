@@ -1,172 +1,315 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jefferson Lima - (JTLTDA) | Portfólio</title>
-    <!-- Tailwind CSS para Estilo Rápido e Bonito -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        .lang-btn.active { background-color: #2563eb; color: white; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
     <!-- Navbar -->
-    <nav class="bg-white shadow-md fixed w-full z-10">
+    <nav class="bg-white shadow-md fixed w-full z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-xl font-bold text-blue-600" id="nav-brand">Carregando...</div>
-            <a href="#contato" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Fale Comigo</a>
+            <div class="text-xl font-bold text-blue-600" data-i18n="brand">Jefferson Lima - (JTLTDA)</div>
+            
+            <!-- Seletor de Idioma -->
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex gap-2">
+                    <button onclick="changeLanguage('pt')" class="lang-btn active px-3 py-1 rounded border border-blue-600 hover:bg-blue-600 hover:text-white transition text-sm" data-lang="pt">🇧🇷 PT</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn px-3 py-1 rounded border border-blue-600 hover:bg-blue-600 hover:text-white transition text-sm" data-lang="en">🇬 EN</button>
+                    <button onclick="changeLanguage('jp')" class="lang-btn px-3 py-1 rounded border border-blue-600 hover:bg-blue-600 hover:text-white transition text-sm" data-lang="jp">🇯 JP</button>
+                </div>
+                <a href="#contato" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" data-i18n="contact">Contato</a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="pt-32 pb-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white text-center">
         <div class="max-w-4xl mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4" id="hero-title">Carregando...</h1>
-            <p class="text-xl md:text-2xl opacity-90 mb-8" id="hero-subtitle">Carregando...</p>
-            <a href="#produtos" class="bg-white text-blue-700 font-bold px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition">Ver Serviços</a>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4" data-i18n="heroTitle">Soluções de Desenvolvimento Sob Medida</h1>
+            <p class="text-xl md:text-2xl opacity-90 mb-8" data-i18n="heroSubtitle">Transformo suas ideias em realidade com qualidade profissional e segurança via Fiverr.</p>
+            <a href="#produtos" class="bg-white text-blue-700 font-bold px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition" data-i18n="seeServices">Ver Serviços</a>
         </div>
     </header>
 
     <!-- Produtos / Serviços -->
     <section id="produtos" class="py-20 max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Meus Serviços no Fiverr</h2>
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800" data-i18n="myServices">Meus Serviços no Fiverr</h2>
         <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Os produtos serão inseridos aqui automaticamente pelo Script -->
+            <!-- Produtos inseridos via JS -->
         </div>
     </section>
 
-    <!-- Sobre / Credibilidade -->
+    <!-- Horário de Atendimento -->
+    <section class="bg-blue-50 py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <i class="fas fa-clock text-blue-600 text-5xl mb-4"></i>
+                <h2 class="text-2xl font-bold mb-4" data-i18n="businessHours">Horário de Atendimento</h2>
+                <p class="text-lg text-gray-700 mb-2">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    <span data-i18n="workingDays">Segunda a Sexta</span>
+                </p>
+                <p class="text-2xl font-bold text-blue-600">
+                    <span data-i18n="workingHours">09:00 - 18:00</span>
+                    <span class="text-sm text-gray-500 block mt-1">(GMT-3 / Brasília)</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
     <section class="bg-white py-20 border-t border-gray-200">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-6">Por que contratar a JTLTDA?</h2>
+            <h2 class="text-3xl font-bold mb-6" data-i18n="whyHire">Por que contratar a JTLTDA?</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="p-4">
                     <i class="fas fa-check-circle text-green-500 text-4xl mb-4"></i>
-                    <h3 class="font-bold text-xl">Qualidade Garantida</h3>
-                    <p class="text-gray-600">Serviços testados e aprovados na plataforma Fiverr.</p>
+                    <h3 class="font-bold text-xl" data-i18n="quality">Qualidade Garantida</h3>
+                    <p class="text-gray-600" data-i18n="qualityText">Serviços testados e aprovados na plataforma Fiverr.</p>
                 </div>
                 <div class="p-4">
                     <i class="fas fa-clock text-blue-500 text-4xl mb-4"></i>
-                    <h3 class="font-bold text-xl">Entrega Rápida</h3>
-                    <p class="text-gray-600">Respeito rigoroso aos prazos estabelecidos.</p>
+                    <h3 class="font-bold text-xl" data-i18n="fastDelivery">Entrega Rápida</h3>
+                    <p class="text-gray-600" data-i18n="fastDeliveryText">Respeito rigoroso aos prazos estabelecidos.</p>
                 </div>
                 <div class="p-4">
                     <i class="fas fa-shield-alt text-purple-500 text-4xl mb-4"></i>
-                    <h3 class="font-bold text-xl">Segurança</h3>
-                    <p class="text-gray-600">Pagamento protegido diretamente pelo Fiverr.</p>
+                    <h3 class="font-bold text-xl" data-i18n="security">Segurança</h3>
+                    <p class="text-gray-600" data-i18n="securityText">Pagamento protegido diretamente pelo Fiverr.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer / Contato -->
-    <footer id="contato" class="bg-gray-800 text-white py-12">
+    <!-- Contato -->
+    <section id="contato" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12" data-i18n="contactTitle">Entre em Contato</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Email -->
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-envelope text-blue-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="email">Email</h3>
+                    <a href="mailto:contato@jltlda.com" class="text-blue-600 hover:underline break-all" id="email-link">contato@jltlda.com</a>
+                    <p class="text-gray-600 mt-2 text-sm" data-i18n="emailResponse">Respondo em até 24h úteis</p>
+                </div>
+
+                <!-- Fiverr -->
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <i class="fab fa-fiverr text-green-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="fiverr">Fiverr</h3>
+                    <a href="https://fiverr.com/jltlda" target="_blank" class="text-green-600 hover:underline" id="fiverr-link">fiverr.com/jltlda</a>
+                    <p class="text-gray-600 mt-2 text-sm" data-i18n="fiverrText">Contrate diretamente pela plataforma</p>
+                </div>
+            </div>
+
+            <!-- Botão WhatsApp -->
+            <div class="text-center mt-8">
+                <a href="https://wa.me/5511999999999" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-4 rounded-full shadow-lg transition text-lg">
+                    <i class="fab fa-whatsapp mr-3 text-2xl"></i>
+                    <span data-i18n="whatsappBtn">Chamar no WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
         <div class="max-w-6xl mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold mb-4" id="footer-brand">Jefferson Lima - (JTLTDA)</h2>
-            <p class="mb-8 text-gray-400">Pronto para iniciar seu projeto? Clique abaixo para acessar meus gigs.</p>
+            <h2 class="text-2xl font-bold mb-4" data-i18n="brand">Jefferson Lima - (JTLTDA)</h2>
+            <p class="mb-8 text-gray-400" data-i18n="footerText">Pronto para iniciar seu projeto?</p>
+            
             <div class="flex justify-center space-x-6 mb-8">
                 <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-linkedin"></i></a>
                 <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-github"></i></a>
                 <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-whatsapp"></i></a>
             </div>
-            <p class="text-sm text-gray-500">&copy; 2024 Jefferson Lima - (JTLTDA). Todos os direitos reservados.</p>
+            
+            <p class="text-sm text-gray-500">&copy; 2024 Jefferson Lima - (JTLTDA). <span data-i18n="allRights">Todos os direitos reservados.</span></p>
         </div>
     </footer>
 
-    <!-- SCRIPT DE CONFIGURAÇÃO (EDITE AQUI) -->
+    <!-- SCRIPT -->
     <script>
-        // =======================================================
-        // ÁREA DE CONFIGURAÇÃO - EDITE APENAS O QUE ESTÁ AQUI
-        // =======================================================
+        // CONFIGURAÇÕES
         const config = {
-            brand: "Jefferson Lima - (JTLTDA)",
-            hero: {
-                title: "Soluções de Desenvolvimento Sob Medida",
-                subtitle: "Transformo suas ideias em realidade com qualidade profissional e segurança via Fiverr."
-            },
-            // Adicione ou remova produtos nesta lista
+            email: "jeffersontulho1@gmail.com", // MUDE AQUI
+            fiverr: "https://fiverr.com/jtltda", // MUDE AQUI
+            whatsapp: "55119952356611", // MUDE AQUI (somente números)
             products: [
                 {
-                    title: "Criação de Landing Page",
-                    description: "Página de vendas de alta conversão, responsiva e rápida.",
-                    price: "A partir de $50",
-                    link: "https://fiverr.com/SEU_LINK_AQUI", // Coloque seu link do Fiverr
+                    title: { pt: "Criação de Landing Page", en: "Landing Page Creation", jp: "ランディングページ作成" },
+                    description: { pt: "Página de vendas de alta conversão, responsiva e rápida.", en: "High-converting, responsive and fast sales page.", jp: "高変換、レスポンシブで高速なセールスページ。" },
+                    price: { pt: "A partir de $50", en: "Starting at $50", jp: "$50から" },
                     icon: "fa-laptop-code"
                 },
                 {
-                    title: "Correção de Bugs em WordPress",
-                    description: "Identificação e correção de erros no seu site WordPress.",
-                    price: "A partir de $30",
-                    link: "https://fiverr.com/SEU_LINK_AQUI",
+                    title: { pt: "Correção de Bugs WordPress", en: "WordPress Bug Fixes", jp: "WordPressバグ修正" },
+                    description: { pt: "Identificação e correção de erros no seu site WordPress.", en: "Identification and fixing of errors on your WordPress site.", jp: "WordPressサイトのエラーの特定と修正。" },
+                    price: { pt: "A partir de $30", en: "Starting at $30", jp: "$30から" },
                     icon: "fa-bug"
                 },
                 {
-                    title: "Script de Automação Python",
-                    description: "Scripts personalizados para automatizar suas tarefas diárias.",
-                    price: "A partir de $100",
-                    link: "https://fiverr.com/SEU_LINK_AQUI",
+                    title: { pt: "Script de Automação Python", en: "Python Automation Script", jp: "Python自動化スクリプト" },
+                    description: { pt: "Scripts personalizados para automatizar suas tarefas.", en: "Custom scripts to automate your tasks.", jp: "タスクを自動化するためのカスタムスクリプト。" },
+                    price: { pt: "A partir de $100", en: "Starting at $100", jp: "$100から" },
                     icon: "fa-python"
-                },
-                {
-                    title: "Consultoria Técnica",
-                    description: "1 hora de chamada para resolver dúvidas técnicas do seu projeto.",
-                    price: "A partir de $40",
-                    link: "https://fiverr.com/SEU_LINK_AQUI",
-                    icon: "fa-comments"
                 }
-            ],
-            social: {
-                linkedin: "https://linkedin.com/in/seu-perfil",
-                github: "https://github.com/seu-perfil",
-                whatsapp: "https://wa.me/seu-numero"
+            ]
+        };
+
+        // TRADUÇÕES
+        const translations = {
+            pt: {
+                brand: "Jefferson Lima - (JTLTDA)",
+                contact: "Contato",
+                heroTitle: "Soluções de Desenvolvimento Sob Medida",
+                heroSubtitle: "Transformo suas ideias em realidade com qualidade profissional e segurança via Fiverr.",
+                seeServices: "Ver Serviços",
+                myServices: "Meus Serviços no Fiverr",
+                businessHours: "Horário de Atendimento",
+                workingDays: "Segunda a Sexta",
+                workingHours: "09:00 - 18:00",
+                whyHire: "Por que contratar a JTLTDA?",
+                quality: "Qualidade Garantida",
+                qualityText: "Serviços testados e aprovados na plataforma Fiverr.",
+                fastDelivery: "Entrega Rápida",
+                fastDeliveryText: "Respeito rigoroso aos prazos estabelecidos.",
+                security: "Segurança",
+                securityText: "Pagamento protegido diretamente pelo Fiverr.",
+                contactTitle: "Entre em Contato",
+                email: "Email",
+                emailResponse: "Respondo em até 24h úteis",
+                fiverr: "Fiverr",
+                fiverrText: "Contrate diretamente pela plataforma",
+                whatsappBtn: "Chamar no WhatsApp",
+                footerText: "Pronto para iniciar seu projeto?",
+                allRights: "Todos os direitos reservados.",
+                hireButton: "Contratar no Fiverr"
+            },
+            en: {
+                brand: "Jefferson Lima - (JTLTDA)",
+                contact: "Contact",
+                heroTitle: "Custom Development Solutions",
+                heroSubtitle: "I turn your ideas into reality with professional quality and security via Fiverr.",
+                seeServices: "See Services",
+                myServices: "My Services on Fiverr",
+                businessHours: "Business Hours",
+                workingDays: "Monday to Friday",
+                workingHours: "09:00 AM - 06:00 PM",
+                whyHire: "Why hire JTLTDA?",
+                quality: "Guaranteed Quality",
+                qualityText: "Services tested and approved on Fiverr platform.",
+                fastDelivery: "Fast Delivery",
+                fastDeliveryText: "Strict compliance with established deadlines.",
+                security: "Security",
+                securityText: "Payment protected directly by Fiverr.",
+                contactTitle: "Get in Touch",
+                email: "Email",
+                emailResponse: "I respond within 24 business hours",
+                fiverr: "Fiverr",
+                fiverrText: "Hire directly through the platform",
+                whatsappBtn: "Chat on WhatsApp",
+                footerText: "Ready to start your project?",
+                allRights: "All rights reserved.",
+                hireButton: "Hire on Fiverr"
+            },
+            jp: {
+                brand: "Jefferson Lima - (JTLTDA)",
+                contact: "お問い合わせ",
+                heroTitle: "カスタム開発ソリューション",
+                heroSubtitle: "Fiverr経由でプロの品質とセキュリティであなたのアイデアを現実に変えます。",
+                seeServices: "サービスを見る",
+                myServices: "Fiverrでの私のサービス",
+                businessHours: "営業時間",
+                workingDays: "月曜日から金曜日",
+                workingHours: "午前9時 - 午後6時",
+                whyHire: "JTLTDAを雇う理由？",
+                quality: "品質保証",
+                qualityText: "Fiverrプラットフォームでテストおよび承認されたサービス。",
+                fastDelivery: "迅速な配達",
+                fastDeliveryText: "確立された期限の厳守。",
+                security: "セキュリティ",
+                securityText: "Fiverrによって直接保護された支払い。",
+                contactTitle: "お問い合わせ",
+                email: "メール",
+                emailResponse: "24営業時間以内に返信します",
+                fiverr: "Fiverr",
+                fiverrText: "プラットフォームから直接雇用",
+                whatsappBtn: "WhatsAppでチャット",
+                footerText: "プロジェクトを開始する準備はできましたか？",
+                allRights: "全著作権所有。",
+                hireButton: "Fiverrで雇う"
             }
         };
-        // =======================================================
-        // FIM DA ÁREA DE CONFIGURAÇÃO (NÃO EDITE ABAIXO)
-        // =======================================================
 
-        // Função que renderiza o site baseado na config
-        function renderSite() {
-            // Textos Gerais
-            document.getElementById('nav-brand').innerText = config.brand;
-            document.getElementById('footer-brand').innerText = config.brand;
-            document.getElementById('hero-title').innerText = config.hero.title;
-            document.getElementById('hero-subtitle').innerText = config.hero.subtitle;
+        let currentLang = 'pt';
 
-            // Renderizar Produtos
+        function changeLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang === 'en' ? 'en' : 'ja';
+            
+            // Atualiza botões
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.dataset.lang === lang) btn.classList.add('active');
+            });
+
+            // Atualiza textos
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.dataset.i18n;
+                if(translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Re-renderiza produtos
+            renderProducts();
+        }
+
+        function renderProducts() {
             const grid = document.getElementById('products-grid');
+            const t = translations[currentLang];
+            
             grid.innerHTML = config.products.map(product => `
                 <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-100 card-hover flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4 text-xl">
                             <i class="fas ${product.icon}"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-2 text-gray-800">${product.title}</h3>
-                        <p class="text-gray-600 mb-4">${product.description}</p>
-                        <p class="text-lg font-bold text-blue-600 mb-4">${product.price}</p>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">${product.title[currentLang]}</h3>
+                        <p class="text-gray-600 mb-4">${product.description[currentLang]}</p>
+                        <p class="text-lg font-bold text-blue-600 mb-4">${product.price[currentLang]}</p>
                     </div>
-                    <a href="${product.link}" target="_blank" class="block w-full text-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition">
-                        Contratar no Fiverr <i class="fas fa-external-link-alt ml-2"></i>
+                    <a href="${config.fiverr}" target="_blank" class="block w-full text-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition">
+                        ${t.hireButton} <i class="fas fa-external-link-alt ml-2"></i>
                     </a>
                 </div>
             `).join('');
-
-            // Renderizar Redes Sociais
-            const socialContainer = document.querySelector('.fab.fa-linkedin').parentElement;
-            let socialHTML = '';
-            if(config.social.linkedin) socialHTML += `<a href="${config.social.linkedin}" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-linkedin"></i></a>`;
-            if(config.social.github) socialHTML += `<a href="${config.social.github}" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-github"></i></a>`;
-            if(config.social.whatsapp) socialHTML += `<a href="${config.social.whatsapp}" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-whatsapp"></i></a>`;
-            socialContainer.parentElement.innerHTML = socialHTML;
         }
 
-        // Iniciar
-        document.addEventListener('DOMContentLoaded', renderSite);
+        // Inicializa
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('email-link').href = `mailto:${config.email}`;
+            document.getElementById('email-link').textContent = config.email;
+            document.getElementById('fiverr-link').href = config.fiverr;
+            
+            // Atualiza link WhatsApp
+            const waLink = document.querySelector('a[href*="wa.me"]');
+            if(waLink) waLink.href = `https://wa.me/${config.whatsapp}`;
+            
+            renderProducts();
+        });
     </script>
 </body>
 </html>
